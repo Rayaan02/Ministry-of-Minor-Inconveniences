@@ -1,0 +1,633 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   THEME — Ministry of Minor Inconveniences
+   ============================================================ */
+:root {
+  --sky-blue: #75c9e8;
+  --sky-blue-deep: #4ba8cc;
+  --warm-cream: #fff0c9;
+  --warm-cream-deep: #f3dda4;
+  --grass-green: #79b86a;
+  --grass-green-deep: #5c9a52;
+  --forest-green: #356b53;
+  --coral-red: #e97862;
+  --coral-red-deep: #c95643;
+  --golden-yellow: #f5c86a;
+  --golden-yellow-deep: #d9a63f;
+  --lavender: #a994d4;
+  --deep-navy: #29364f;
+  --deep-navy-dark: #1a2337;
+  --wood-brown: #956746;
+  --wood-brown-deep: #6f4b30;
+  --paper: #fff8e6;
+  --pigeon-light: #dce0e8;
+  --pigeon-mid: #a9b0c2;
+  --outline: var(--deep-navy);
+}
+
+* {
+  border-color: var(--outline);
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--warm-cream);
+  color: var(--deep-navy);
+  font-family: 'Pixelify Sans', ui-sans-serif, system-ui, sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  -webkit-font-smoothing: none;
+  text-rendering: optimizeSpeed;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Press Start 2P', monospace;
+  line-height: 1.5;
+}
+
+::selection {
+  background: var(--golden-yellow);
+  color: var(--deep-navy);
+}
+
+:focus-visible {
+  outline: 4px solid var(--coral-red);
+  outline-offset: 3px;
+}
+
+/* Chunky retro scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--deep-navy) var(--warm-cream-deep);
+}
+*::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+*::-webkit-scrollbar-track {
+  background: var(--warm-cream-deep);
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--deep-navy);
+  border: 2px solid var(--warm-cream-deep);
+}
+
+/* ============================================================
+   PIXEL PRIMITIVES
+   ============================================================ */
+.pixelated {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  shape-rendering: crispEdges;
+}
+
+.panel {
+  background: var(--paper);
+  border: 4px solid var(--outline);
+  box-shadow: 6px 6px 0 rgba(41, 54, 79, 0.9);
+  border-radius: 0;
+}
+
+.panel-tight {
+  box-shadow: 4px 4px 0 rgba(41, 54, 79, 0.9);
+}
+
+.panel-navy {
+  background: var(--deep-navy);
+  color: var(--warm-cream);
+  border: 4px solid var(--deep-navy-dark);
+  box-shadow: 6px 6px 0 rgba(26, 35, 55, 0.75);
+}
+
+.panel-wood {
+  background: var(--wood-brown);
+  border: 4px solid var(--wood-brown-deep);
+  box-shadow: 6px 6px 0 rgba(41, 54, 79, 0.75);
+}
+
+.panel-sky {
+  background: var(--sky-blue);
+  border: 4px solid var(--outline);
+  box-shadow: 6px 6px 0 rgba(41, 54, 79, 0.85);
+}
+
+.inset-pixel {
+  box-shadow: inset 3px 3px 0 rgba(41, 54, 79, 0.2);
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 11px;
+  line-height: 1.6;
+  padding: 0.85rem 1.1rem;
+  border: 4px solid var(--outline);
+  border-radius: 0;
+  background: var(--paper);
+  color: var(--deep-navy);
+  box-shadow: 5px 5px 0 var(--outline);
+  cursor: pointer;
+  text-align: center;
+  transition: transform 90ms steps(2), box-shadow 90ms steps(2), background 90ms steps(2);
+  user-select: none;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 var(--outline);
+}
+
+.btn:active:not(:disabled) {
+  transform: translate(3px, 3px);
+  box-shadow: 2px 2px 0 var(--outline);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  filter: saturate(0.5);
+}
+
+.btn-primary {
+  background: var(--coral-red);
+  color: #fff8f2;
+  text-shadow: 2px 2px 0 var(--coral-red-deep);
+}
+.btn-primary:hover:not(:disabled) {
+  background: #f08a74;
+}
+
+.btn-secondary {
+  background: var(--golden-yellow);
+  color: var(--deep-navy);
+}
+.btn-secondary:hover:not(:disabled) {
+  background: #ffd97f;
+}
+
+.btn-lavender {
+  background: var(--lavender);
+  color: #241a3d;
+}
+.btn-lavender:hover:not(:disabled) {
+  background: #bcaaе0;
+  background: #bcaae0;
+}
+
+.btn-wood {
+  background: var(--wood-brown);
+  color: var(--warm-cream);
+  border-color: var(--wood-brown-deep);
+  box-shadow: 5px 5px 0 var(--wood-brown-deep);
+}
+.btn-wood:active:not(:disabled),
+.btn-wood:hover:not(:disabled) {
+  box-shadow: 7px 7px 0 var(--wood-brown-deep);
+}
+
+.btn-sm {
+  font-size: 9px;
+  padding: 0.5rem 0.7rem;
+  box-shadow: 4px 4px 0 var(--outline);
+}
+
+/* ============================================================
+   FORM CONTROLS
+   ============================================================ */
+.field-label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  letter-spacing: 0.02em;
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--deep-navy);
+}
+
+.input,
+.textarea,
+.select {
+  width: 100%;
+  font-family: 'Pixelify Sans', sans-serif;
+  font-size: 18px;
+  color: var(--deep-navy);
+  background: #fffdf3;
+  border: 4px solid var(--outline);
+  border-radius: 0;
+  padding: 0.7rem 0.75rem;
+  box-shadow: inset 3px 3px 0 rgba(41, 54, 79, 0.14);
+}
+
+.textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: #9c8f76;
+}
+
+.input[aria-invalid='true'],
+.textarea[aria-invalid='true'] {
+  border-color: var(--coral-red);
+  background: #fff2ee;
+}
+
+.field-error {
+  font-size: 15px;
+  color: var(--coral-red-deep);
+  font-weight: 600;
+  margin-top: 0.35rem;
+}
+
+/* Selectable game tiles */
+.tile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  text-align: left;
+  background: #fffdf3;
+  border: 4px solid var(--outline);
+  box-shadow: 4px 4px 0 rgba(41, 54, 79, 0.85);
+  padding: 0.75rem 0.85rem;
+  cursor: pointer;
+  transition: transform 90ms steps(2), box-shadow 90ms steps(2), background 90ms steps(2);
+  width: 100%;
+}
+.tile:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 rgba(41, 54, 79, 0.85);
+  background: #fffaе0;
+  background: #fffae0;
+}
+.tile[aria-pressed='true'] {
+  background: var(--golden-yellow);
+  box-shadow: 4px 4px 0 var(--outline), inset 0 0 0 3px rgba(255, 255, 255, 0.5);
+}
+
+/* ============================================================
+   DIALOGUE + NARRATION
+   ============================================================ */
+.dialogue-box {
+  background: var(--paper);
+  border: 4px solid var(--outline);
+  box-shadow: 0 6px 0 rgba(41, 54, 79, 0.9), inset 0 0 0 4px #fffdf3, inset 0 0 0 8px rgba(41, 54, 79, 0.18);
+  padding: 1.1rem 1.15rem;
+  position: relative;
+}
+
+.caret::after {
+  content: '▌';
+  animation: blink 1s steps(2, start) infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+.anim-bob {
+  animation: bob 2.6s ease-in-out infinite;
+}
+
+@keyframes cloud-drift {
+  from {
+    transform: translateX(-12%);
+  }
+  to {
+    transform: translateX(112%);
+  }
+}
+.anim-cloud {
+  animation: cloud-drift 70s linear infinite;
+}
+.anim-cloud-slow {
+  animation: cloud-drift 120s linear infinite;
+}
+
+@keyframes walk {
+  from {
+    transform: translateX(-80px);
+  }
+  to {
+    transform: translateX(calc(100vw + 80px));
+  }
+}
+.anim-walk {
+  animation: walk 26s linear infinite;
+}
+
+@keyframes pop-in {
+  0% {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.03);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.anim-pop {
+  animation: pop-in 260ms steps(4, end) both;
+}
+
+@keyframes stamp-in {
+  0% {
+    transform: scale(2.6) rotate(-22deg);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(0.94) rotate(-8deg);
+    opacity: 1;
+  }
+  75% {
+    transform: scale(1.06) rotate(-10deg);
+  }
+  100% {
+    transform: scale(1) rotate(-9deg);
+    opacity: 1;
+  }
+}
+.anim-stamp {
+  animation: stamp-in 620ms steps(9, end) both;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.anim-fade-up {
+  animation: fade-up 320ms ease-out both;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-12vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(112vh) rotate(540deg);
+    opacity: 0.9;
+  }
+}
+.confetti-bit {
+  position: fixed;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--deep-navy);
+  animation: confetti-fall linear forwards;
+  pointer-events: none;
+  z-index: 60;
+}
+
+@keyframes ticker-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.anim-ticker {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: ticker-scroll 42s linear infinite;
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+}
+.anim-wiggle {
+  animation: wiggle 1.4s steps(4, end) infinite;
+}
+
+@keyframes toast-in {
+  from {
+    transform: translateY(120%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.anim-toast {
+  animation: toast-in 280ms steps(5, end) both;
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(233, 120, 98, 0.75);
+  }
+  100% {
+    box-shadow: 0 0 0 16px rgba(233, 120, 98, 0);
+  }
+}
+.anim-pulse-ring {
+  animation: pulse-ring 1.6s ease-out infinite;
+}
+
+/* ============================================================
+   WORLD SCENERY HELPERS
+   ============================================================ */
+.sky-band {
+  background: linear-gradient(
+    to bottom,
+    var(--sky-blue) 0%,
+    var(--sky-blue) 62%,
+    var(--sky-blue-deep) 62%,
+    var(--sky-blue-deep) 64%,
+    var(--sky-blue) 64%,
+    var(--sky-blue) 100%
+  );
+}
+
+.ground-band {
+  background: linear-gradient(
+    to bottom,
+    var(--grass-green) 0%,
+    var(--grass-green) 12%,
+    var(--grass-green-deep) 12%,
+    var(--grass-green-deep) 18%,
+    var(--grass-green) 18%,
+    var(--grass-green) 100%
+  );
+}
+
+.cobble {
+  background-color: var(--warm-cream-deep);
+  background-image: linear-gradient(90deg, rgba(41, 54, 79, 0.35) 2px, transparent 2px),
+    linear-gradient(rgba(41, 54, 79, 0.35) 2px, transparent 2px);
+  background-size: 22px 22px;
+}
+
+.rot-a {
+  transform: rotate(-1.2deg);
+}
+.rot-b {
+  transform: rotate(1.4deg);
+}
+.rot-c {
+  transform: rotate(-0.6deg);
+}
+
+/* ============================================================
+   MISC
+   ============================================================ */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  padding: 0.35rem 0.5rem;
+  border: 3px solid var(--outline);
+  background: var(--paper);
+  white-space: nowrap;
+}
+
+.hr-pixel {
+  height: 4px;
+  border: 0;
+  background-image: linear-gradient(90deg, var(--outline) 50%, transparent 50%);
+  background-size: 12px 4px;
+  margin: 1rem 0;
+}
+
+.link-underline {
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 3px;
+}
+
+.case-card-pin {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 18px;
+  background: var(--coral-red);
+  border: 3px solid var(--outline);
+  border-radius: 0;
+}
+
+.parchment {
+  background-color: var(--paper);
+  background-image: linear-gradient(rgba(41, 54, 79, 0.06) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(41, 54, 79, 0.06) 2px, transparent 2px);
+  background-size: 26px 26px;
+}
+
+.stamp-mark {
+  font-family: 'Press Start 2P', monospace;
+  color: var(--coral-red);
+  border: 8px double var(--coral-red);
+  padding: 0.6rem 1rem;
+  text-shadow: 3px 3px 0 rgba(201, 86, 67, 0.35);
+  background: rgba(255, 240, 201, 0.65);
+  letter-spacing: 0.05em;
+}
+
+.ticker-shell {
+  overflow: hidden;
+  background: var(--deep-navy);
+  color: var(--golden-yellow);
+  border-top: 4px solid var(--outline);
+  border-bottom: 4px solid var(--outline);
+}
+
+/* ============================================================
+   PRINT — certificates only
+   ============================================================ */
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 10mm;
+  }
+  body {
+    background: #fff;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-sheet {
+    box-shadow: none !important;
+    border-width: 4px;
+    width: 100%;
+    max-width: none;
+  }
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .anim-cloud,
+  .anim-cloud-slow,
+  .anim-walk,
+  .anim-ticker {
+    animation: none !important;
+    transform: none !important;
+  }
+}
